@@ -27,7 +27,7 @@
   
        
 3. SysAdmin (the user with the admin role if applicable):
-    1. Manage user access - .
-    2. Moderate services - .
-    3. Moderate reviews - .
-    4. View usage statistics - .
+    1. Manage user access — Admins can ban or restore user accounts or check activity.
+    2. Moderate services — Admins can remove groups or events that break the rules.
+    3. Moderate reviews — Admins can delete inappropriate reviews.
+    4. View usage statistics — Admins see platform-wide data like total users, groups, and events.
