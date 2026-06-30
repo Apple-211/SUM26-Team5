@@ -48,27 +48,27 @@ Story: As a customer, I want to create a user profile so that I can personalize 
 Acceptance:
 
 Scenario: Create a user profile
-    Given <I am not registered>
-    When <I provide valid registration details and submit>
-    Then <my profile should be created and I should be logged in>
+    Given I am not registered
+    When I provide valid registration details and submit
+    Then my profile should be created and I should be logged in
 
 US-2 – Browse and join hobby circles
 Story: As a customer, I want to search for groups by interest or location so that I can find and join hobby circles that match what I enjoy.
 Acceptance:
 
 Scenario: Browse and join a hobby circle
-    Given <I am logged in as a customer>
-    When <I search for groups by interest or location>
-    Then <I should see a list of relevant hobby circles I can join>
+    Given I am logged in as a customer
+    When I search for groups by interest or location
+    Then I should see a list of relevant hobby circles I can join
 
 US-3 – RSVP to an event
 Story: As a customer, I want to RSVP to an event so that I can confirm my attendance and keep track of upcoming activities.
 Acceptance:
 
  Scenario: RSVP to an event
-    Given <I am logged in and a member of a hobby circle>
-    When <I select an upcoming event and choose to RSVP>
-    Then <my RSVP should be saved and the event should appear on my schedule>
+    Given I am logged in and a member of a hobby circle
+    When I select an upcoming event and choose to RSVP
+    Then my RSVP should be saved and the event should appear on my schedule
 
 2.2 Provider Stories - Yasmin
 US-20 —
