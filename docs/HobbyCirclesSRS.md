@@ -2,7 +2,7 @@
 Requirements – Starter Template
 
 Project Name: HobbyCircles
-Team: Yasmin Castro-Cervantes (Provider) and Ashley Crespo 
+Team: Yasmin Castro-Cervantes (Provider) and Ashley Crespo (User)
 Course: CSC 340
 Version: 1.0
 Date: 2026-06-29
@@ -42,23 +42,33 @@ Write each story as: As a <role>, I want <capability>, so that <benefit>. Each s
 
 
 2.1 Customer Stories - Ashley
-US‑1 —
-Story: As a customer, I want … so that …
+
+US-1 – Create a user profile
+Story: As a customer, I want to create a user profile so that I can personalize my experience and join hobby circles.
 Acceptance:
 
-Scenario: <happy path>
-  Given <preconditions>
-  When  <action>
-  Then  <observable outcome>
-US‑2 —
-Story: As a customer, I want … so that …
+Scenario: Create a user profile
+    Given I am not registered
+    When I provide valid registration details and submit
+    Then my profile should be created and I should be logged in
+
+US-2 – Browse and join hobby circles
+Story: As a customer, I want to search for groups by interest or location so that I can find and join hobby circles that match what I enjoy.
 Acceptance:
 
-Scenario: <happy path>
-  Given <preconditions>
-  When  <action>
-  Then  <observable outcome>
+Scenario: Browse and join a hobby circle
+    Given I am logged in as a customer
+    When I search for groups by interest or location
+    Then I should see a list of relevant hobby circles I can join
 
+US-3 – RSVP to an event
+Story: As a customer, I want to RSVP to an event so that I can confirm my attendance and keep track of upcoming activities.
+Acceptance:
+
+ Scenario: RSVP to an event
+    Given I am logged in and a member of a hobby circle
+    When I select an upcoming event and choose to RSVP
+    Then my RSVP should be saved and the event should appear on my schedule
 
 2.2 Provider Stories - Yasmin
 
@@ -101,14 +111,17 @@ Scenario: <happy path>
 
 
 3. Non‑Functional Requirements (make them measurable)
-Performance: description
-Availability/Reliability: description
-Security/Privacy: description
-Usability: description
+Performance: 95% of searches and page loads return results in under 2 seconds.
+Availability/Reliability: The platform should be available 99.5% of the time, with maintenance windows announced in advance.
+Security/Privacy: Passwords and user data must be encrypted in transit and at rest.
+Usability: A new user should be able to register, join a circle, and RSVP to an event within 5 minutes.
 
 
 4. Assumptions, Constraints, and Policies
-list any rules, policies, assumptions, etc.
+Users need a modern browser and stable internet connection.
+Users must agree to terms of use upon registration.
+Providers are responsible for their own group and event content.
+Admins can remove any content that violates platform rules.
 
 
 5. Milestones (course‑aligned)
