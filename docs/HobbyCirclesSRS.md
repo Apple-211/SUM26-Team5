@@ -138,4 +138,4 @@ M6 Final — complete system & documentation.
 Stories are living artifacts; changes are tracked via repository issues and linked pull requests.
 Major changes should update this SRS. 
 
-Save and Commit often. 
+Save and Commit often
