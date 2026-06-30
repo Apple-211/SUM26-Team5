@@ -61,25 +61,27 @@ Scenario: <happy path>
 
 
 2.2 Provider Stories - Yasmin
-US-20 —
-Story: As a provider, I want … so that …
+
+US-2 --
+Story: As a provider, I want to create a profile so that I attract users to my hobby circle. 
 Acceptance:
 
 Scenario: <happy path>
-  Given <preconditions>
-  When  <action>
-  Then  <observable outcome>
-US-21 —
-Story: As a provider, I want … so that …
+  Given I am a registered provider and logged into the HobbyCircles platform
+  When  I create and sumbit my profile with details such as my bio, interests, etc.
+  Then  my profile is saved successfully and displayed to users browsing similar interest in hobby circles. 
+US-4 --
+Story: As a provider, I want to schedule an event so that users can RSVP 
 Acceptance:
 
-Scenario: <happy path>
-  Given <preconditions>
-  When  <action>
-  Then  <observable outcome>
+Scenario: Happy path
+  Given I am a registered provider and I am logged into my HobbyCircles account with access to my hobby circle.
+  When I create a new event by entering event details such as title, description, date, time, and location and submit. 
+  Then the event is successfully created and displayed for users to RSVP.
 
 
 2.3 SysAdmin Stories < - Optional ?
+
 US‑30 —
 Story: As a sysadmin, I want … so that …
 Acceptance:
