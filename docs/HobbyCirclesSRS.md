@@ -52,7 +52,7 @@ Scenario: Create a user profile
     When I provide valid registration details and submit
     Then my profile should be created and I should be logged in
 
-US-2 – Browse and join hobby circles
+US-3 – Browse and join hobby circles
 Story: As a customer, I want to search for groups by interest or location so that I can find and join hobby circles that match what I enjoy.
 Acceptance:
 
@@ -61,7 +61,7 @@ Scenario: Browse and join a hobby circle
     When I search for groups by interest or location
     Then I should see a list of relevant hobby circles I can join
 
-US-3 – RSVP to an event
+US-5 – RSVP to an event
 Story: As a customer, I want to RSVP to an event so that I can confirm my attendance and keep track of upcoming activities.
 Acceptance:
 
@@ -80,6 +80,7 @@ Scenario: <happy path>
   Given I am a registered provider and logged into the HobbyCircles platform
   When  I create and sumbit my profile with details such as my bio, interests, etc.
   Then  my profile is saved successfully and displayed to users browsing similar interest in hobby circles. 
+
 US-4 --
 Story: As a provider, I want to schedule an event so that users can RSVP 
 Acceptance:
@@ -135,4 +136,6 @@ M6 Final — complete system & documentation.
 
 6. Change Management
 Stories are living artifacts; changes are tracked via repository issues and linked pull requests.
-Major changes should update this SRS.
+Major changes should update this SRS. 
+
+Save and Commit often. 
