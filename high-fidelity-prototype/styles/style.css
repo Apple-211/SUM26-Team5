@@ -1,14 +1,125 @@
-body {
-    font-family: 'Times New Roman', Times, serif;
-    margin: 20px;
-}
+/* General */
 
-h1 {
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
     color: #333;
 }
 
-a {
-    display: block;
-    margin: 10px 0;
+/* Navigation Bar */
+
+nav {
+    background-color: #4a6cf7;
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+/* Cards */
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,.12);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+/* Buttons */
+
+button,
+.btn {
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover,
+.btn:hover {
+    background: #3557db;
+}
+
+/* Forms */
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* Event Cards */
+
+.event {
+    border-left: 6px solid #4a6cf7;
+}
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #4a6cf7;
+    color: white;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: gray;
 }
 
