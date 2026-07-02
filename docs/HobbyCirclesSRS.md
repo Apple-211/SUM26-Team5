@@ -91,7 +91,30 @@ Scenario: Happy path
   Then the event is successfully created and displayed for users to RSVP.
 
 
-2.3 SysAdmin Stories < - Optional ?
+US-6 --
+Story: As a provider, I want to have a calendar of my events so that I can stay organized, track RSVPs, and manage attendance effectively.
+
+Acceptance:
+
+Scenario: Happy path
+Given I am a registered provider and logged into the HobbyCircles platform
+When I access my calendar and view my scheduled events with RSVP details
+Then I can see all my events organized by date along with the number of users who have RSVPs.
+
+
+US-7 --
+Story: As a provider, I want to see reviews based on past events so that I can improve my hosting skills and create a positive experience for everyone.
+
+Acceptance:
+
+Scenario: Happy path
+Given I am a registered provider and logged into the HobbyCircles platform
+When I navigate to my past events and view user reviews and ratings
+Then I can see feedback from users which helps me improve future events and enhance user experience
+
+
+
+2.3 SysAdmin Stories < - Optional 
 
 US‑30 —
 Story: As a sysadmin, I want … so that …
