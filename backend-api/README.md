@@ -1,3 +1,6 @@
+## Live API
+Deployed on Render: https://sum26-team5.onrender.com
+
 ## Customer Endpoints (Ashley Crespo)
 
 ### Customer
