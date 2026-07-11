@@ -192,3 +192,7 @@ The API endpoints support the following SRS user stories.
 | **US-4 Schedule and manage events** | `POST /api/events/provider/{providerId}`, `GET /api/events`, `GET /api/events/{eventId}`, `GET /api/events/provider/{providerId}`, `PUT /api/events/{eventId}`, `DELETE /api/events/{eventId}` |
 | **US-6 View event calendar and RSVP counts** | `GET /api/events/provider/{providerId}` |
 | **US-7 View reviews and reply to reviews** | `GET /api/reviews/event/{eventId}`, `POST /api/replies/review/{reviewId}`, `GET /api/replies`, `DELETE /api/replies/{replyId}` |
+
+## 5. Live Deployment 
+
+URL: https://sum26-team5-45b5.onrender.com 
