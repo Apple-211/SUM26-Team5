@@ -1,13 +1,18 @@
-# Stage 1: Build the application using JDK 22
-FROM eclipse-temurin:22-jdk-alpine AS build
-WORKDIR /app
-COPY . .
-RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+FROM maven:3.9-eclipse-temurin-25-alpine AS build
 
-# Stage 2: Create a lightweight runtime image using JRE 22
-FROM eclipse-temurin:22-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/*.jar HobbyCircles.jar
+
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+FROM eclipse-temurin:25-jre
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "HobbyCircles.jar"]
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
