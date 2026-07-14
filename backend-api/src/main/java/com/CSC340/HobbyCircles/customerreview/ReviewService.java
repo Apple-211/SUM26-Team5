@@ -1,11 +1,11 @@
 
-package com.CSC340.HobbyCircles.Review;
+package com.CSC340.HobbyCircles.customerreview;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("customerReviewService")
 public class ReviewService {
     private final ReviewRepository reviewRepository;
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topbar">
+    <h2>HobbyCircles</h2>
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="search.html">Search Groups</a>
+        <a href="review.html">Leave a Review</a>
+        <a href="signup.html">Profile</a>
+    </nav>
+</div>
+<hr>
+<h1>Leave a Review</h1>
+<div class="form-card">
+    <label>Group: </label>
+    <select id="groupSelect">
+        <option value="">Choose a group you've joined</option>
+    </select>
+    <label>Rating: </label>
+    <input type="number" id="rating" min="1" max="5" placeholder="1-5 stars">
+    <label>Review: </label>
+    <textarea id="comment" placeholder="Share your experience with this group..."></textarea>
+    <button id="submitReviewBtn">Submit Review</button>
+    <p id="reviewMessage"></p>
+</div>
+<p>Not seeing a group listed? You can only review circles you've joined, <a href="search.html">find one to join here</a>.</p>
+
+<script>
+const customerId = localStorage.getItem('customerId');
+if (!customerId) {
+    window.location.href = 'login.html';
+}
+
+async function loadEvents() {
+    const select = document.getElementById('groupSelect');
+    try {
+        const response = await fetch('/api/events');
+        const events = await response.json();
+        events.forEach(event => {
+            const option = document.createElement('option');
+            option.value = event.eventId;
+            option.textContent = event.title;
+            select.appendChild(option);
+        });
+    } catch (err) {
+        console.error('Could not load events', err);
+    }
+}
+loadEvents();
+
+document.getElementById('submitReviewBtn').addEventListener('click', async () => {
+    const messageEl = document.getElementById('reviewMessage');
+    const groupId = document.getElementById('groupSelect').value;
+    const rating = parseInt(document.getElementById('rating').value, 10);
+    const comment = document.getElementById('comment').value;
+
+    if (!groupId) {
+        messageEl.textContent = "Please choose a group to review.";
+        return;
+    }
+    if (!rating || rating < 1 || rating > 5) {
+        messageEl.textContent = "Please enter a rating between 1 and 5.";
+        return;
+    }
+
+    const review = { groupId: parseInt(groupId, 10), rating, comment };
+
+    try {
+        const response = await fetch(`/api/customers/${customerId}/reviews`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(review)
+        });
+
+        if (!response.ok) {
+            throw new Error('Review submission failed: ' + response.status);
+        }
+
+        messageEl.textContent = "Review submitted, thank you!";
+        document.getElementById('rating').value = '';
+        document.getElementById('comment').value = '';
+        document.getElementById('groupSelect').value = '';
+    } catch (err) {
+        messageEl.textContent = "Something went wrong submitting your review. Please try again.";
+        console.error(err);
+    }
+});
+</script>
+
+</body>
+</html>
