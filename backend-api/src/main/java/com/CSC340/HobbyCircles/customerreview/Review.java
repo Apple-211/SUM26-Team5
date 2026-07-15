@@ -1,5 +1,5 @@
 
-package com.CSC340.HobbyCircles.Review;
+package com.CSC340.HobbyCircles.customerreview;
 
 import java.time.LocalDate;
 
@@ -13,8 +13,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "reviews")
+@Entity(name = "CustomerReview")
+@Table(name = "customer_reviews")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

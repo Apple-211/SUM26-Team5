@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topbar">
+    <h2>HobbyCircles</h2>
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="search.html">Search Groups</a>
+        <a href="signup.html">Profile</a>
+    </nav>
+</div>
+<hr>
+<h1>Welcome<span id="customerNameLabel"></span></h1>
+<script>
+const customerName = localStorage.getItem('customerName');
+if (customerName) {
+    document.getElementById('customerNameLabel').textContent = ', ' + customerName;
+}
+</script>
+<div class="card">
+    <h3>Your Groups</h3>
+    <p>You are a member of 3 groups</p>
+    <a href="search.html">Find More Groups</a>
+</div>
+<div class="card">
+    <h3>Upcoming RSVPs</h3>
+    <p>You have 2 upcoming events</p>
+</div>
+<div class="card">
+    <h3>Morning Yoga Meetup</h3>
+    <p><strong>Date:</strong> July 3, 2026</p>
+    <p><strong>Location:</strong> Downtown Raleigh</p>
+    <p><strong>Status:</strong> RSVP Confirmed</p>
+</div>
+<div class="card">
+    <h3>Cars and Coffee</h3>
+    <p><strong>Date:</strong> July 15, 2026</p>
+    <p><strong>Location:</strong> North Hills Parking Lot</p>
+    <p><strong>Status:</strong> RSVP Confirmed</p>
+</div>
+
+</body>
+</html>
