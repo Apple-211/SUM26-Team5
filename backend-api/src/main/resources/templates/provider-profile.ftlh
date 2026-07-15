@@ -33,22 +33,28 @@
 
  <div class="form-card small-form">
 
-    <label>Name:</label>
-    <input type="text" placeholder="e.g. John Doe">
+    <form action="/provider-profile" method="post">
 
-    <label>Email:</label>
-    <input type="text" placeholder="e.g. @gmail.com, @icloud.com ">
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="e.g. John Doe" required>
 
-    <label>Interest/Hobbies:</label>
-    <textarea placeholder="Vlogging, Music, Anime, etc."></textarea>
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="e.g. @gmail.com, @icloud.com" required>
 
-    <label>Description:</label>
-    <textarea placeholder="Tell users about your events..."></textarea>
+        <label>Interest/Hobbies:</label>
+        <textarea name="interests" placeholder="Vlogging, Music, Anime, etc."></textarea>
 
-    <label>Location</label>
-    <input type="text" placeholder="City/Area">
+        <label>Description:</label>
+        <textarea name="description" placeholder="Tell users about your events..."></textarea>
 
-    <button class="btn primary-btn">Create Profile</button>
+        <label>Location:</label>
+        <input type="text" name="location" placeholder="City/Area">
+
+        <button type="submit" class="btn primary-btn">
+            Create Profile
+        </button>
+
+    </form>
 
 </div>
 
