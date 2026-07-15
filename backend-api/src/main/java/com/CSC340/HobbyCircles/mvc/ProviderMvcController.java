@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.ui.Model;
+import java.util.List;
+
 @Controller
 public class ProviderMvcController {
 
@@ -16,10 +19,18 @@ public class ProviderMvcController {
         this.providerService = providerService;
     }
 
-    @GetMapping("/provider-profile")
-    public String showProviderProfile() {
-        return "provider-profile";
+   @GetMapping("/provider-profile")
+    public String showProviderProfile(Model model) {
+
+    List<Provider> providers = providerService.getAllProviders();
+
+    if (!providers.isEmpty()) {
+        Provider latestProvider = providers.get(providers.size() - 1);
+        model.addAttribute("provider", latestProvider);
     }
+
+    return "provider-profile";
+}
 
     @PostMapping("/provider-profile")
     public String createProvider(@ModelAttribute Provider provider) {
