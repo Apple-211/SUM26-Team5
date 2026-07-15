@@ -1,5 +1,5 @@
 
-package com.CSC340.HobbyCircles.customerreview;
+package com.CSC340.HobbyCircles.Review;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.CSC340.HobbyCircles.Customer.Customer;
 import com.CSC340.HobbyCircles.Customer.CustomerService;
 
-@RestController("customerReviewController")
+@RestController
 @RequestMapping("/api")
 public class ReviewController {
     private final ReviewService reviewService;
@@ -26,7 +26,7 @@ public class ReviewController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customer-reviews")
+    @GetMapping("/reviews")
     public List<Review> getAllReviews() {
         return reviewService.getAllReviews();
     }
@@ -55,7 +55,7 @@ public class ReviewController {
         return reviewService.createReview(review);
     }
 
-    @DeleteMapping("/customer-reviews/{reviewId}")
+    @DeleteMapping("/reviews/{reviewId}")
     public void deleteReview(@PathVariable Long reviewId) {
         reviewService.deleteReview(reviewId);
     }
