@@ -32,7 +32,7 @@
 
     <div class="form-card small-form">
 
-        <form action="/provider-profile" method="post">
+        <form action="/provider-profile" method="post"> 
 
             <label>Name:</label>
             <input type="text" name="name" placeholder="e.g. John Doe" required>
@@ -59,6 +59,7 @@
         </form>
 
     </div>
+
 
     <#if provider??>
 

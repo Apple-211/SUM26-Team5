@@ -11,30 +11,31 @@ import org.springframework.ui.Model;
 import java.util.List;
 
 @Controller
-public class ProviderMvcController {
+public class ProviderMvcController {  //creates the controller 
 
     private final ProviderService providerService;
 
-    public ProviderMvcController(ProviderService providerService) {
-        this.providerService = providerService;
+    public ProviderMvcController(ProviderService providerService) { //constructor
+        this.providerService = providerService; //stores the service inside the controller
     }
 
    @GetMapping("/provider-profile")
-    public String showProviderProfile(Model model) {
+    public String showProviderProfile(Model model) { //method 
 
     List<Provider> providers = providerService.getAllProviders();
+     //model let's data be sent to the file
 
     if (!providers.isEmpty()) {
-        Provider latestProvider = providers.get(providers.size() - 1);
-        model.addAttribute("provider", latestProvider);
-    }
+        Provider latestProvider = providers.get(providers.size() - 1); // latest provider
+        model.addAttribute("provider", latestProvider); //send the provider to .ftlh file
+    } 
 
     return "provider-profile";
 }
 
     @PostMapping("/provider-profile")
-    public String createProvider(@ModelAttribute Provider provider) {
-        providerService.createProvider(provider);
+    public String createProvider(@ModelAttribute Provider provider) { //creates a provider from this form
+        providerService.createProvider(provider);  //send the provider to the service , then saved to the database
         return "redirect:/provider-profile";
     }
 }
