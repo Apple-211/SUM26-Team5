@@ -16,9 +16,7 @@ public class EventMvcController {
     private final EventService eventService;
     private final ProviderService providerService;
 
-    public EventMvcController(
-            EventService eventService,
-            ProviderService providerService) {
+    public EventMvcController(EventService eventService, ProviderService providerService) {
 
         this.eventService = eventService;
         this.providerService = providerService;
@@ -35,9 +33,7 @@ public class EventMvcController {
     }
 
     @PostMapping("/create-event")
-    public String createEvent(
-            @RequestParam Long providerId,
-            @ModelAttribute Event event) {
+    public String createEvent(@RequestParam Long providerId, @ModelAttribute Event event) {
 
         eventService.createEvent(providerId, event);
 
