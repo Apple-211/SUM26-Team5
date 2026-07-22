@@ -19,34 +19,130 @@
 <hr>
 <h1>Search Groups</h1>
 <div class="form-card">
-    <label>Interest: </label>
-    <input type="text" placeholder="e.g. hiking, coding, board games">
+    <label>Interest / Host / Keyword: </label>
+    <input type="text" id="interestInput" placeholder="e.g. hiking, coding, board games, or a host's name">
     <label>Location: </label>
-    <input type="text" placeholder="City / Area">
-    <button>Search</button>
+    <input type="text" id="locationInput" placeholder="City / Area">
+    <button id="searchBtn">Search</button>
 </div>
 
-<div class="card">
-    <h3>Morning Yoga Meetup</h3>
-    <p><strong>Host:</strong> FitLife Events</p>
-    <p><strong>Location:</strong> Downtown Raleigh</p>
-    <p><strong>Description:</strong> Beginner-friendly yoga session in the park.</p>
-    <p><strong>Members:</strong> 18</p>
-    <button>Join Group</button>
-    <button>RSVP to Event</button>
-</div>
-
-<div class="card">
-    <h3>Cars and Coffee</h3>
-    <p><strong>Host:</strong> FitLife Events</p>
-    <p><strong>Location:</strong> North Hills Parking Lot</p>
-    <p><strong>Description:</strong> A casual morning meetup for car enthusiasts to showcase vehicles.</p>
-    <p><strong>Members:</strong> 48</p>
-    <button>Join Group</button>
-    <button>RSVP to Event</button>
-</div>
+<p id="statusMessage"></p>
+<div id="resultsContainer"></div>
 
 <p>Already part of a group? <a href="review.html">Leave a review</a> for one you've joined.</p>
+
+<script>
+const customerId = localStorage.getItem('customerId');
+let allEvents = [];
+
+if (!customerId) {
+    window.location.href = 'login.html';
+}
+
+async function loadEvents() {
+    const statusEl = document.getElementById('statusMessage');
+    try {
+        const response = await fetch('/api/events');
+        if (!response.ok) {
+            throw new Error('Failed to load events: ' + response.status);
+        }
+        allEvents = await response.json();
+        renderEvents(allEvents);
+    } catch (err) {
+        statusEl.textContent = "Couldn't load groups/events right now. Please try again later.";
+        console.error(err);
+    }
+}
+
+function renderEvents(events) {
+    const container = document.getElementById('resultsContainer');
+    const statusEl = document.getElementById('statusMessage');
+    container.innerHTML = '';
+
+    if (!events || events.length === 0) {
+        statusEl.textContent = 'No groups or events found.';
+        return;
+    }
+    statusEl.textContent = '';
+
+    events.forEach(event => {
+        const hostName = event.provider ? event.provider.name : 'Unknown host';
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <h3>${event.title || 'Untitled Event'}</h3>
+            <p><strong>Host:</strong> ${hostName}</p>
+            <p><strong>Category:</strong> ${event.category || 'N/A'}</p>
+            <p><strong>Location:</strong> ${event.location || 'N/A'}</p>
+            <p><strong>Date:</strong> ${event.eventDate || 'N/A'} ${event.eventTime || ''}</p>
+            <p><strong>Description:</strong> ${event.description || ''}</p>
+            <p><strong>Capacity:</strong> ${event.rsvpCount || 0} / ${event.capacity || 'N/A'}</p>
+            <button class="rsvp-btn" data-event-id="${event.eventId}">RSVP to Event</button>
+            <button class="review-btn" data-event-id="${event.eventId}">Leave a Review</button>
+            <span class="rsvp-status" id="rsvp-status-${event.eventId}"></span>
+        `;
+        container.appendChild(card);
+    });
+
+    document.querySelectorAll('.rsvp-btn').forEach(btn => {
+        btn.addEventListener('click', () => rsvpToEvent(btn.dataset.eventId));
+    });
+
+    document.querySelectorAll('.review-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            window.location.href = 'review.html?groupId=' + btn.dataset.eventId;
+        });
+    });
+}
+
+async function rsvpToEvent(eventId) {
+    const statusSpan = document.getElementById('rsvp-status-' + eventId);
+    if (!customerId) {
+        statusSpan.textContent = ' Please log in to RSVP.';
+        return;
+    }
+    try {
+        const response = await fetch(`/api/customers/${customerId}/rsvps`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ groupId: Number(eventId) })
+        });
+        if (!response.ok) {
+            throw new Error('RSVP failed: ' + response.status);
+        }
+        const rsvp = await response.json();
+        if (!rsvp) {
+            statusSpan.textContent = ' RSVP failed. Please try again.';
+            return;
+        }
+        statusSpan.textContent = ' RSVP confirmed!';
+    } catch (err) {
+        statusSpan.textContent = ' RSVP failed. Please try again.';
+        console.error(err);
+    }
+}
+
+function applyFilters() {
+    const interest = document.getElementById('interestInput').value.trim().toLowerCase();
+    const location = document.getElementById('locationInput').value.trim().toLowerCase();
+
+    const filtered = allEvents.filter(event => {
+        const hostName = event.provider && event.provider.name ? event.provider.name.toLowerCase() : '';
+        const haystack = [
+            event.title, event.category, event.description, hostName
+        ].filter(Boolean).join(' ').toLowerCase();
+
+        const matchesInterest = !interest || haystack.includes(interest);
+        const matchesLocation = !location || (event.location || '').toLowerCase().includes(location);
+        return matchesInterest && matchesLocation;
+    });
+
+    renderEvents(filtered);
+}
+
+document.getElementById('searchBtn').addEventListener('click', applyFilters);
+loadEvents();
+</script>
 
 </body>
 </html>
