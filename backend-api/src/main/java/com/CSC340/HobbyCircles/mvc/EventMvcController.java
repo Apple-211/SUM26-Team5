@@ -39,4 +39,36 @@ public class EventMvcController {
 
         return "redirect:/create-event";
     }
+
+//added new code 
+
+    @GetMapping("/my-events")
+public String showMyEvents(
+        @RequestParam(required = false) Long providerId,
+        Model model
+) {
+
+    model.addAttribute(
+            "providers",
+            providerService.getAllProviders()
+    );
+
+    if (providerId != null) {
+        var events = eventService.getEventsByProvider(providerId);
+
+        int totalRsvps = events.stream()
+                .mapToInt(Event::getRsvpCount)
+                .sum();
+
+        model.addAttribute("events", events);
+        model.addAttribute("selectedProviderId", providerId);
+        model.addAttribute("totalEvents", events.size());
+        model.addAttribute("totalRsvps", totalRsvps);
+    }
+
+    return "my-events";
 }
+
+}
+
+
