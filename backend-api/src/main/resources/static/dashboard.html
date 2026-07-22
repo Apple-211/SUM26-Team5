@@ -13,37 +13,120 @@
         <a href="dashboard.html">Dashboard</a>
         <a href="search.html">Search Groups</a>
         <a href="signup.html">Profile</a>
+        <a href="#" id="logoutLink">Log Out</a>
     </nav>
 </div>
 <hr>
 <h1>Welcome<span id="customerNameLabel"></span></h1>
+
+<div class="card">
+    <h3>Upcoming RSVPs</h3>
+    <p id="rsvpCountLabel">You have 0 upcoming events</p>
+    <a href="search.html">Find More Groups</a>
+</div>
+
+<p id="statusMessage"></p>
+<div id="rsvpContainer"></div>
+
 <script>
+const customerId = localStorage.getItem('customerId');
 const customerName = localStorage.getItem('customerName');
+
+if (!customerId) {
+    window.location.href = 'login.html';
+}
+
 if (customerName) {
     document.getElementById('customerNameLabel').textContent = ', ' + customerName;
 }
+
+document.getElementById('logoutLink').addEventListener('click', () => {
+    localStorage.removeItem('customerId');
+    localStorage.removeItem('customerName');
+    window.location.href = 'login.html';
+});
+
+async function loadDashboard() {
+    const statusEl = document.getElementById('statusMessage');
+    const container = document.getElementById('rsvpContainer');
+    const countLabel = document.getElementById('rsvpCountLabel');
+
+    try {
+        const [rsvpResponse, eventResponse] = await Promise.all([
+            fetch(`/api/customers/${customerId}/rsvps`),
+            fetch('/api/events')
+        ]);
+
+        if (!rsvpResponse.ok || !eventResponse.ok) {
+            throw new Error('Failed to load dashboard data');
+        }
+
+        const rsvps = await rsvpResponse.json();
+        const events = await eventResponse.json();
+
+        // Map eventId -> event details, since Rsvp only stores a groupId reference.
+        const eventsById = {};
+        events.forEach(ev => { eventsById[ev.eventId] = ev; });
+
+        countLabel.textContent = `You have ${rsvps.length} upcoming event${rsvps.length === 1 ? '' : 's'}`;
+
+        if (rsvps.length === 0) {
+            statusEl.textContent = "You haven't RSVP'd to any events yet.";
+            return;
+        }
+        statusEl.textContent = '';
+
+        container.innerHTML = '';
+        rsvps.forEach(rsvp => {
+            const event = eventsById[rsvp.groupId];
+            const card = document.createElement('div');
+            card.className = 'card';
+            if (event) {
+                const hostName = event.provider ? event.provider.name : 'Unknown host';
+                card.innerHTML = `
+                    <h3>${event.title}</h3>
+                    <p><strong>Host:</strong> ${hostName}</p>
+                    <p><strong>Date:</strong> ${event.eventDate || 'N/A'} ${event.eventTime || ''}</p>
+                    <p><strong>Location:</strong> ${event.location || 'N/A'}</p>
+                    <p><strong>Status:</strong> RSVP Confirmed</p>
+                    <button class="cancel-btn" data-rsvp-id="${rsvp.rsvpId}">Cancel RSVP</button>
+                `;
+            } else {
+                card.innerHTML = `
+                    <h3>Event #${rsvp.groupId}</h3>
+                    <p><strong>Status:</strong> RSVP Confirmed (event details unavailable)</p>
+                    <button class="cancel-btn" data-rsvp-id="${rsvp.rsvpId}">Cancel RSVP</button>
+                `;
+            }
+            container.appendChild(card);
+        });
+
+        document.querySelectorAll('.cancel-btn').forEach(btn => {
+            btn.addEventListener('click', () => cancelRsvp(btn.dataset.rsvpId));
+        });
+    } catch (err) {
+        statusEl.textContent = "Couldn't load your RSVPs right now. Please try again later.";
+        console.error(err);
+    }
+}
+
+async function cancelRsvp(rsvpId) {
+    try {
+        const response = await fetch(`/api/rsvps/${rsvpId}`, { method: 'DELETE' });
+        if (!response.ok) {
+            throw new Error('Cancel failed: ' + response.status);
+        }
+        loadDashboard();
+    } catch (err) {
+        document.getElementById('statusMessage').textContent = "Couldn't cancel that RSVP. Please try again.";
+        console.error(err);
+    }
+}
+
+if (customerId) {
+    loadDashboard();
+}
 </script>
-<div class="card">
-    <h3>Your Groups</h3>
-    <p>You are a member of 3 groups</p>
-    <a href="search.html">Find More Groups</a>
-</div>
-<div class="card">
-    <h3>Upcoming RSVPs</h3>
-    <p>You have 2 upcoming events</p>
-</div>
-<div class="card">
-    <h3>Morning Yoga Meetup</h3>
-    <p><strong>Date:</strong> July 3, 2026</p>
-    <p><strong>Location:</strong> Downtown Raleigh</p>
-    <p><strong>Status:</strong> RSVP Confirmed</p>
-</div>
-<div class="card">
-    <h3>Cars and Coffee</h3>
-    <p><strong>Date:</strong> July 15, 2026</p>
-    <p><strong>Location:</strong> North Hills Parking Lot</p>
-    <p><strong>Status:</strong> RSVP Confirmed</p>
-</div>
 
 </body>
 </html>
