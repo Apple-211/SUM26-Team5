@@ -9,7 +9,7 @@
 - Service S: 
 
 ## Use Cases
-#### 1. Customer: US‑CUST‑001 — Register & manage profile
+#### 1. (EXAMPLE) Customer: US‑CUST‑001 — Register & manage profile
 1. Customer C1 logs in for the first time and creates a profile.
 2. C1 edits their profile to add preferences.
 3. C1 exits. 
