@@ -14,22 +14,31 @@
 2. C1 edits their profile to add preferences.
 3. C1 exits. 
 
-#### 2. 
-1.
-2. 
-
-#### 3. Provider: 
-1.
-2.
-
-#### 4. Provider: 
+#### 1. Customer: 
 1.
 
+#### 2.. 
+1.
+
+#### 3.. 
+1.
+
+#### 4. Customer:
+1.
+
+  
 #### 5. Provider: 
 1.
 2.
 
 #### 6. Provider: 
+1.
+
+#### 7. Provider: 
+1.
+2.
+
+#### 8. Provider: 
 1.
 2.
 
