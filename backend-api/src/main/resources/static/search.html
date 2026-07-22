@@ -78,6 +78,7 @@ function renderEvents(events) {
             <p><strong>Description:</strong> ${event.description || ''}</p>
             <p><strong>Capacity:</strong> ${event.rsvpCount || 0} / ${event.capacity || 'N/A'}</p>
             <button class="rsvp-btn" data-event-id="${event.eventId}">RSVP to Event</button>
+            <button class="review-btn" data-event-id="${event.eventId}">Leave a Review</button>
             <span class="rsvp-status" id="rsvp-status-${event.eventId}"></span>
         `;
         container.appendChild(card);
@@ -85,6 +86,12 @@ function renderEvents(events) {
 
     document.querySelectorAll('.rsvp-btn').forEach(btn => {
         btn.addEventListener('click', () => rsvpToEvent(btn.dataset.eventId));
+    });
+
+    document.querySelectorAll('.review-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            window.location.href = 'review.html?groupId=' + btn.dataset.eventId;
+        });
     });
 }
 
