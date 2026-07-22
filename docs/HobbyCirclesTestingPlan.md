@@ -46,12 +46,9 @@
 
 ### Performance Requirements
 
-**Scenario P1: Discover page response time < 1.5 seconds**
-- **Setup:** Server under typical load
-- **Steps:**
-  1. Measure response time for "Browse" page load with 5 active providers, 10+ services
-  2. Repeat 10 times
-- **Expected Outcome:** 95% of requests ≤ 1.5 seconds
+**Scenario P1: Platform stays up**
+- **Steps:** Access the app at different times over the week.
+- **Expected Outcome:** App is available 99.5% of the time
 
 **Scenario P2:**
 - **Setup:** 
@@ -62,12 +59,9 @@
 
 ### Security & Privacy Requirements
 
-**Scenario S1:**
-- **Setup:** 
-- **Steps:**
-  1. x
-  2. y
-- **Expected Outcome:** 
+**Scenario S1: Wrong password is rejected**
+- **Steps:** Log in with correct email, wrong password.
+- **Expected Outcome:** Login fails.
 
 **Scenario S2:**
 - **Setup:** 
@@ -78,12 +72,9 @@
 
 ### Usability Requirements
 
-**Scenario U1:**
-- **Setup:** 
-- **Steps:**
-  1. x
-  2. y
-- **Expected Outcome:** 
+**Scenario U1:New customer can sign up and RSVP quickly
+- **Steps:** Sign up, browse groups, RSVP to an event.
+- **Expected Outcome:** Done in under 5 minutes with no errors.
 
 **Scenario U2:**
 - **Setup:** 
