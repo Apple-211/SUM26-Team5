@@ -5,26 +5,26 @@
 
 ## Actors
 - Provider P: Yasmin Castro
-- Customer C:
+- Customer C: Ashley Crespo
 - Service S: 
 
-## Use Cases
-#### 1. (EXAMPLE) Customer: US‑CUST‑001 — Register & manage profile
-1. Customer C1 logs in for the first time and creates a profile.
-2. C1 edits their profile to add preferences.
-3. C1 exits. 
+#### 1. Customer: Sign up and browse/join hobby circles
+1. opens `signup.html` and enters name, email, password.
+2. submits and their profile is created.
+3. searches for groups on `search.html`, opens one, and views its details.
 
-#### 1. Customer: 
-1.
+#### 2. Customer: Log in
+1. opens `login.html` and enters email and password.
+2. is logged in and taken to their dashboard.
 
-#### 2. 
-1.
+#### 3. Customer: RSVP to an event
+1. RSVPs to an upcoming event.
+2. sees the RSVP on their dashboard.
 
-#### 3. 
-1.
-
-#### 4. Customer:
-1.
+#### 6. Customer: Leave a review
+1. opens `review.html` for a group they attended.
+2. submits a rating and comment.
+3. sees the review saved under that group.
 
   
 #### 5. Provider: 
