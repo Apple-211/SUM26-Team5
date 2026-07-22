@@ -1,12 +1,12 @@
-**Project Name:**   
+**Project Name:**   HobbyCircles
 **Version:** 
-**Date:**  
-**Purpose:** 
+**Date:**  July 21, 26
+**Purpose:** Made to make it easier for people to find and connect with others who share their interests and hobbies.
 
 ## Actors
-- Provider P:
+- Provider P: Yasmin Castro
 - Customer C:
-- Service S:
+- Service S: 
 
 ## Use Cases
 #### 1. Customer: US‑CUST‑001 — Register & manage profile
@@ -18,11 +18,18 @@
 1.
 2. 
 
-#### 6. Provider: 
+#### 3. Provider: 
 1.
 2.
 
-#### 7. Provider: 
+#### 4. Provider: 
+1.
+
+#### 5. Provider: 
+1.
+2.
+
+#### 6. Provider: 
 1.
 2.
 
