@@ -63,13 +63,6 @@
 - **Steps:** Log in with correct email, wrong password.
 - **Expected Outcome:** Login fails.
 
-**Scenario S2:**
-- **Setup:** 
-- **Steps:**
-  1. x
-  2. y
-- **Expected Outcome:**
-
 ### Usability Requirements
 
 **Scenario U1:New customer can sign up and RSVP quickly
