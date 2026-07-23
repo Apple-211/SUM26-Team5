@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Provider Access</title>
+    <title>Provider Portal</title>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -18,30 +18,14 @@
         <h1>Welcome to HobbyCircles</h1>
 
         <p>
-            Log in as an existing provider or create a new provider profile.
+            Manage your provider profile, events, RSVPs, and customer reviews.
         </p>
 
-        <h2>Provider Login</h2>
+        <h2>Provider Portal</h2>
 
-        <form action="/dashboard" method="get">
-
-            <label>Select Provider:</label>
-
-            <select name="providerId" required>
-                <option value="">Choose your profile</option>
-
-                <#list providers as provider>
-                    <option value="${provider.providerId}">
-                        ${provider.name}
-                    </option>
-                </#list>
-            </select>
-
-            <button type="submit" class="btn">
-                Log In
-            </button>
-
-        </form>
+        <a href="/dashboard" class="btn">
+            Go to Dashboard
+        </a>
 
         <hr>
 

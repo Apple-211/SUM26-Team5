@@ -29,6 +29,7 @@ public class ReviewMvcController {
     public String showReviews(Model model) {
 
         List<Review> reviews = reviewService.getAllReviews();
+        reviews.sort((r1, r2) -> r2.getCreatedDate().compareTo(r1.getCreatedDate())); //maybe this will work
         Map<String, String> eventTitles = new HashMap<>();
 
         for (Review review : reviews) {

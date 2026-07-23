@@ -57,10 +57,6 @@ body {
     font-weight: bold;
 }
 
-/* =========================
-   CONTAINER (PAGE LAYOUT)
-========================= */
-
 .container {
     max-width: 900px;
     margin: 40px auto;
@@ -115,6 +111,7 @@ input, textarea {
     border: 1px solid #d1d5db;
     border-radius: 8px;
     font-size: 14px;
+    margin-bottom: 30px;
 }
 
 label {
@@ -123,13 +120,13 @@ label {
     margin-top: 10px;
 }
 
-/* TEXTAREA SIZE */
+
 textarea {
     min-height: 120px;
     resize: none;
 }
 
-/* FORM CARD (optional but clean) */
+/* FORM CARD */
 .form-card {
     background: white;
     padding: 25px;
@@ -250,4 +247,19 @@ textarea {
     display: block;
     margin: 0 auto 20px auto;
     padding: 10px;
+}
+
+
+.provider-access-card hr {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+
+.event-photo {
+    width: 230px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 15px 0;
 }

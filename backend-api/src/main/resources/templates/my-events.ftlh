@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-
 <body>
 
 <nav class="navbar">
@@ -30,102 +29,79 @@
     <h1>My Events 📅</h1>
 
     <div class="card">
-        <form action="/my-events" method="get">
+        <h2>Event Summary</h2>
 
-            <label>Select Provider:</label>
+        <p>
+            <strong>Total Events:</strong>
+            ${totalEvents}
+        </p>
 
-            <select name="providerId" required>
-                <option value="">Select a provider</option>
-
-                <#list providers as provider>
-                    <option
-                        value="${provider.providerId}"
-                        <#if selectedProviderId?? && selectedProviderId == provider.providerId>
-                            selected
-                        </#if>
-                    >
-                        ${provider.name}
-                    </option>
-                </#list>
-            </select>
-
-            <button type="submit" class="btn">
-                View Events
-            </button>
-
-        </form>
+        <p>
+            <strong>Total RSVPs:</strong>
+            ${totalRsvps}
+        </p>
     </div>
 
-    <#if events??>
+    <#if events?? && events?size gt 0>
 
-        <div class="card">
-            <h2>Event Summary</h2>
-
-            <p>
-                <strong>Total Events:</strong>
-                ${totalEvents}
-            </p>
-
-            <p>
-                <strong>Total RSVPs:</strong>
-                ${totalRsvps}
-            </p>
-        </div>
-
-        <#if events?size gt 0>
-
-            <#list events as event>
-
-                <div class="card">
-
-                    <h2>${event.title}</h2>
-
-                    <p>
-                        <strong>Date:</strong>
-                        ${event.eventDate}
-                    </p>
-
-                    <p>
-                        <strong>Time:</strong>
-                        ${event.eventTime}
-                    </p>
-
-                    <p>
-                        <strong>Location:</strong>
-                        ${event.location}
-                    </p>
-
-                    <p>
-                        <strong>Category:</strong>
-                        ${event.category!"Not provided"}
-                    </p>
-
-                    <p>
-                        <strong>Capacity:</strong>
-                        ${event.capacity}
-                    </p>
-
-                    <p>
-                        <strong>RSVPs:</strong>
-                        ${event.rsvpCount}
-                    </p>
-
-                    <p>
-                        <strong>Description:</strong>
-                        ${event.description!"No description provided"}
-                    </p>
-
-                </div>
-
-            </#list>
-
-        <#else>
+        <#list events as event>
 
             <div class="card">
-                <p>This provider has not created any events yet.</p>
+
+                <h2>${event.title}</h2>
+
+                <p>
+                    <strong>Date:</strong>
+                    ${event.eventDate}
+                </p>
+
+                <p>
+                    <strong>Time:</strong>
+                    ${event.eventTime}
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    ${event.location}
+                </p>
+
+                <p>
+                    <strong>Category:</strong>
+                    ${event.category!"Not provided"}
+                </p>
+
+                <p>
+                    <strong>Capacity:</strong>
+                    ${event.capacity}
+                </p>
+
+                <p>
+                    <strong>RSVPs:</strong>
+                    ${event.rsvpCount}
+                </p>
+
+                <p>
+                    <strong>Description:</strong>
+                    ${event.description!"No description provided"}
+                </p>
+
+                <#if event.imageUrl?? && event.imageUrl?has_content>
+               <img
+        src="${event.imageUrl}"
+        alt="${event.title}"
+        class="event-photo">
+               </#if>
+
+
             </div>
 
-        </#if>
+        </#list>
+
+    <#else>
+
+        <div class="card">
+            <p>You have not created any events yet.</p>
+        </div>
 
     </#if>
 

@@ -34,25 +34,25 @@
 
     <div class="dashboard-grid">
 
-        <div class="card">
-            <h2>${totalProviders}</h2>
-            <p>Provider Profiles</p>
-            <a href="/provider-profile" class="btn">View Profile</a>
-        </div>
-
-        <div class="card">
-            <h2>${totalEvents}</h2>
-            <p>Total Events</p>
-            <a href="/my-events" class="btn">View Events</a>
-        </div>
-
-        <div class="card">
-            <h2>${totalReviews}</h2>
-            <p>Customer Reviews</p>
-            <a href="/reviews" class="btn">View Reviews</a>
-        </div>
-
+    <div class="card">
+        <h2>${totalRsvps}</h2>
+        <p>Total RSVPs</p>
+        <a href="/my-events" class="btn">View RSVPs</a>
     </div>
+
+    <div class="card">
+        <h2>${totalEvents}</h2>
+        <p>My Events</p>
+        <a href="/my-events" class="btn">View Events</a>
+    </div>
+
+    <div class="card">
+        <h2>${totalReviews}</h2>
+        <p>Customer Reviews</p>
+        <a href="/reviews" class="btn">View Reviews</a>
+    </div>
+
+</div>
 
     <div class="card">
         <h2>Quick Actions</h2>

@@ -32,6 +32,10 @@
 
         <h1>Your Provider Profile ✨</h1>
 
+        <p style="color:green; font-weight:bold; margin-bottom:20px;">
+            ✅ Profile Created Successfully
+        </p>
+
         <div class="card">
 
             <h2>${provider.name}</h2>
@@ -40,6 +44,10 @@
             <p><strong>Interests:</strong> ${provider.interests!"Not provided"}</p>
             <p><strong>Description:</strong> ${provider.description!"Not provided"}</p>
             <p><strong>Location:</strong> ${provider.location!"Not provided"}</p>
+
+            <button type="button" class="btn">
+                Update Profile
+            </button>
 
         </div>
 
@@ -70,7 +78,7 @@
                 <label>Interests/Hobbies:</label>
                 <textarea
                     name="interests"
-                    placeholder="Vlogging, music, anime, etc."
+                    placeholder="Vlogging, Music, Anime, etc."
                 ></textarea>
 
                 <label>Description:</label>
@@ -93,31 +101,6 @@
             </form>
 
         </div>
-
-    </#if>
-
-</div>
-
-
-  <#if provider??>
-
-    <div class="card">
-
-        <h2>Profile Created Successfully ✅</h2>
-
-        <p><strong>Name:</strong> ${provider.name}</p>
-        <p><strong>Email:</strong> ${provider.email}</p>
-        <p><strong>Interests:</strong> ${provider.interests!"Not provided"}</p>
-        <p><strong>Description:</strong> ${provider.description!"Not provided"}</p>
-        <p><strong>Location:</strong> ${provider.location!"Not provided"}</p>
-
-        <button type="button" class="btn">
-    Update Profile
-        </button>
-
-    </div>
-
-</#if>
 
     </#if>
 
