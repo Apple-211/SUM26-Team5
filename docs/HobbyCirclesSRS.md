@@ -73,7 +73,7 @@ Acceptance:
 2.2 Provider Stories - Yasmin
 
 US-2 --
-Story: As a provider, I want to create a profile so that I attract users to my hobby circle. 
+Story: As a provider, I want to create a profile so that I attract users to my hobby circle event. 
 Acceptance:
 
 Scenario: <happy path>
@@ -82,7 +82,7 @@ Scenario: <happy path>
   Then  my profile is saved successfully and displayed to users browsing similar interest in hobby circles. 
 
 US-4 --
-Story: As a provider, I want to schedule an event so that users can RSVP 
+Story: As a provider, I want to create multiple events so that I can bring people together with similar interest. 
 Acceptance:
 
 Scenario: Happy path
@@ -92,13 +92,13 @@ Scenario: Happy path
 
 
 US-6 --
-Story: As a provider, I want to have a calendar of my events so that I can stay organized, track RSVPs, and manage attendance effectively.
+Story: As a provider, I want to have a list of my events so that I can stay organized and track RSVPs.
 
 Acceptance:
 
 Scenario: Happy path
 Given I am a registered provider and logged into the HobbyCircles platform
-When I access my calendar and view my scheduled events with RSVP details
+When I access my Events and view my  events with RSVP details
 Then I can see all my events organized by date along with the number of users who have RSVPs.
 
 
@@ -161,4 +161,3 @@ M6 Final — complete system & documentation.
 Stories are living artifacts; changes are tracked via repository issues and linked pull requests.
 Major changes should update this SRS. 
 
-Save and Commit often
