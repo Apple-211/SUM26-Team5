@@ -1,12 +1,12 @@
 **Project Name:**   HobbyCircles
-**Version:** 
-**Date:**  July 21, 26
-**Purpose:** Made to make it easier for people to find and connect with others who share their interests and hobbies.
+**Version:** 1.0
+**Date:**  July 22, 26
+**Purpose:** Test plan for HobbyCircles application
 
 ## Actors
-- Provider P: Yasmin Castro
-- Customer C: Ashley Crespo
-- Service S: 
+- Provider P: Event Host
+- Customer C: User seeking to make connection
+- Service S: Attend event offered by the Provider (Host)
 
 #### 1. Customer: Sign up and browse/join hobby circles
 1. opens `signup.html` and enters name, email, password.
@@ -27,20 +27,23 @@
 3. sees the review saved under that group.
 
   
-#### 5. Provider: 
-1.
-2.
+#### 5. Provider: US-PROV-02 - Create a profile to start creating events!
+1. Provider goes to the application and clicks create profile
+2. Provider fills out the form and click create to submit form
+3. Confirmation of profile created shows up
 
-#### 6. Provider: 
-1.
+#### 6. Provider: US-PROV-04 - Create events
+1. Provider opens the Create Event page.
+2. Provider enters the event title, description, date, time, location, category, and capacity.
+3. Provider submits the form.
 
-#### 7. Provider: 
-1.
-2.
+#### 7. Provider: US-PROV-06 - Provider can view their Events
+1. Provider opens the 'My Events' page.
+2. Shows events created by the provider. 
 
-#### 8. Provider: 
-1.
-2.
+#### 8. Provider: US-PROV-07 - View reviews 
+1. Provider opens the Reviews page.
+2. Submitted customer reviews are displayed.
 
 ## CROSS-CUTTING TEST SCENARIOS (Non-Functional Requirements)
 
