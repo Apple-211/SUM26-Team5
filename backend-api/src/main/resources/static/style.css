@@ -201,3 +201,53 @@ textarea {
 
     box-shadow:0 4px 12px rgba(0,0,0,.15);
 }
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 30px 0;
+}
+
+.dashboard-grid .card {
+    text-align: center;
+}
+
+.dashboard-grid h2 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.dashboard-grid .btn {
+    display: inline-block;
+    margin-top: 12px;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.provider-access-card {
+    max-width: 650px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.provider-access-card form {
+    margin: 25px 0;
+}
+
+.provider-access-card select {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.provider-access-card select {
+    width: 50%;
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+}

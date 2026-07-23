@@ -5,8 +5,8 @@ import com.CSC340.HobbyCircles.provider.ProviderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.ui.Model;
 import java.util.List;
 
@@ -38,4 +38,11 @@ public class ProviderMvcController {  //creates the controller
         providerService.createProvider(provider);  //send the provider to the service , then saved to the database
         return "redirect:/provider-profile";
     }
+
+    @GetMapping("/provider-profile/new")
+public String showCreateProviderProfile() {
+    return "create-provider-profile";
+}
+
+
 }
