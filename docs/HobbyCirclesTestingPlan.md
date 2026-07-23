@@ -1,6 +1,9 @@
 **Project Name:**   HobbyCircles
+
 **Version:** 1.0
+
 **Date:**  July 22, 26
+
 **Purpose:** Test plan for HobbyCircles application
 
 ## Actors
@@ -53,12 +56,13 @@
 - **Steps:** Access the app at different times over the week.
 - **Expected Outcome:** App is available 99.5% of the time
 
-**Scenario P2:**
-- **Setup:** 
-- **Steps:**
-  1. x
-  2. y
-- **Expected Outcome:** 
+**Scenario P2:** Pages Loads Quickly
+- **Setup:** The application is showing the information related to providers, customers, events, and reviews sections. 
+- **Steps:** 
+1. Open the dashboard page.
+2. Open the My Events page.
+3. Open the Reviews page.
+- **Expected Outcome:** Each page loads and displays its information within 2.5 seconds under normal usage conditions.
 
 ### Security & Privacy Requirements
 
@@ -72,9 +76,10 @@
 - **Steps:** Sign up, browse groups, RSVP to an event.
 - **Expected Outcome:** Done in under 5 minutes with no errors.
 
-**Scenario U2:**
-- **Setup:** 
+**Scenario U2:** Provider want to create a profile. 
+- **Setup:** The Provider (Host) does not already have an account.
 - **Steps:**
-  1. x
-  2. y
-- **Expected Outcome:** 
+1. Click Create Profile button.
+2. Complete all required fields.
+3. Click Create Profile button. Profile created successfully!
+- **Expected Outcome:** The provider completes the process in under ~ 6 minutes without errors/assistance. 
