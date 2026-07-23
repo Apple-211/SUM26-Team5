@@ -49,6 +49,14 @@ async function loadEvents() {
             option.textContent = event.title;
             select.appendChild(option);
         });
+
+        // If we arrived here from a "Leave a Review" button on search.html,
+        // pre-select that event's group in the dropdown.
+        const params = new URLSearchParams(window.location.search);
+        const preselectGroupId = params.get('groupId');
+        if (preselectGroupId) {
+            select.value = preselectGroupId;
+        }
     } catch (err) {
         console.error('Could not load events', err);
     }
