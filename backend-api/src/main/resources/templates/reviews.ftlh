@@ -26,7 +26,7 @@
 
 <div class="container">
 
-    <h1>Reviews ⭐</h1>
+    <h1>Event Reviews ⭐</h1>
 
     <#if reviews?? && reviews?size gt 0>
 
@@ -34,15 +34,20 @@
 
             <div class="card">
 
-                <#if review.event??>
-                    <h2>${review.event.title!"Untitled Event"}</h2>
-                <#else>
-                    <h2>Event Not Available</h2>
-                </#if>
+        <#if review.groupId?? && eventTitles[review.groupId?string]??>
+    <h2>${eventTitles[review.groupId?string]}</h2>
+      <#else>
+    <h2>Event Not Available</h2>
+       </#if>
+
 
                 <p>
                     <strong>Reviewer:</strong>
-                    ${review.reviewerName!"Anonymous"}
+                    <#if review.customer??>
+                        ${review.customer.name!"Anonymous"}
+                    <#else>
+                        Anonymous
+                    </#if>
                 </p>
 
                 <p>
@@ -52,13 +57,20 @@
 
                 <p>
                     <strong>Date:</strong>
-                    ${review.reviewDate!"No date provided"}
+                    ${review.createdDate!"No date provided"}
                 </p>
 
                 <p>
                     <strong>Comment:</strong>
                     ${review.comment!"No comment provided"}
                 </p>
+
+                <#if review.replyText?? && review.replyText?has_content>
+                    <p>
+                        <strong>Provider Reply:</strong>
+                        ${review.replyText}
+                    </p>
+                </#if>
 
             </div>
 
