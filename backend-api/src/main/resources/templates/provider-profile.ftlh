@@ -28,50 +28,77 @@
 
 <div class="container">
 
-    <h1>Create Your Profile ✨</h1>
-
-    <div class="form-card small-form">
-
-        <form action="/provider-profile" method="post"> 
-
-            <label>Name:</label>
-            <input type="text" name="name" placeholder="e.g. John Doe" required>
-
-            <label>Email:</label>
-            <input type="email" name="email"
-                   placeholder="e.g. @gmail.com, @icloud.com" required>
-
-            <label>Interest/Hobbies:</label>
-            <textarea name="interests"
-                      placeholder="Vlogging, Music, Anime, etc."></textarea>
-
-            <label>Description:</label>
-            <textarea name="description"
-                      placeholder="Tell users about your events..."></textarea>
-
-            <label>Location:</label>
-            <input type="text" name="location" placeholder="City/Area">
-
-            <button type="submit" class="btn primary-btn">
-                Create Profile
-            </button>
-
-        </form>
-
-    </div>
-
-
     <#if provider??>
+
+        <h1>Your Provider Profile ✨</h1>
+
+        <p style="color:green; font-weight:bold; margin-bottom:20px;">
+            ✅ Profile Created Successfully
+        </p>
 
         <div class="card">
 
-            <h2>Saved Provider Profile</h2>
+            <h2>${provider.name}</h2>
 
-            <p><strong>Name:</strong> ${provider.name}</p>
             <p><strong>Email:</strong> ${provider.email}</p>
-            <p><strong>Interests:</strong> ${provider.interests!""}</p>
-            <p><strong>Description:</strong> ${provider.description!""}</p>
-            <p><strong>Location:</strong> ${provider.location!""}</p>
+            <p><strong>Interests:</strong> ${provider.interests!"Not provided"}</p>
+            <p><strong>Description:</strong> ${provider.description!"Not provided"}</p>
+            <p><strong>Location:</strong> ${provider.location!"Not provided"}</p>
+
+            <button type="button" class="btn">
+                Update Profile
+            </button>
+
+        </div>
+
+    <#else>
+
+        <h1>Create Your Profile ✨</h1>
+
+        <div class="form-card small-form">
+
+            <form action="/provider-profile" method="post">
+
+                <label>Name:</label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="e.g. John Doe"
+                    required
+                >
+
+                <label>Email:</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="e.g. name@gmail.com"
+                    required
+                >
+
+                <label>Interests/Hobbies:</label>
+                <textarea
+                    name="interests"
+                    placeholder="Vlogging, Music, Anime, etc."
+                ></textarea>
+
+                <label>Description:</label>
+                <textarea
+                    name="description"
+                    placeholder="Tell users about your events..."
+                ></textarea>
+
+                <label>Location:</label>
+                <input
+                    type="text"
+                    name="location"
+                    placeholder="City/Area"
+                >
+
+                <button type="submit" class="btn primary-btn">
+                    Create Profile
+                </button>
+
+            </form>
 
         </div>
 

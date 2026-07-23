@@ -32,16 +32,10 @@
 
         <form action="/create-event" method="post">
 
-            <label>Provider:</label>
-            <select name="providerId" required>
-                <option value="">Select a provider</option>
-
-                <#list providers as provider>
-                    <option value="${provider.providerId}">
-                        ${provider.name}
-                    </option>
-                </#list>
-            </select>
+        <p>
+    <strong>Creating event as:</strong>
+    ${provider.name}
+          </p>
 
             <label>Event Name:</label>
             <input
@@ -74,6 +68,9 @@
 
             <label>Capacity:</label>
             <input type="number" name="capacity" min="1">
+
+            <label>Event Image URL:</label>
+            <input type="url" name="imageUrl" placeholder="Paste a public image URL">
 
             <label>Description:</label>
             <textarea

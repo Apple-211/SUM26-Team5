@@ -24,6 +24,8 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
+    private String imageUrl;
+
     private String description;
 
     private String eventDate;
@@ -38,6 +40,7 @@ public class Event {
 
     private int rsvpCount;
 
+    
     @ManyToOne
     @JoinColumn(name = "provider_id")
     private Provider provider;
